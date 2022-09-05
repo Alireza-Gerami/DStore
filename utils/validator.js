@@ -4,7 +4,9 @@ async function validate(inputData, schema) {
   } catch (err) {
     throw {
       status: 400,
-      message: err.errors,
+      data: {
+        message: err.errors,
+      },
     };
   }
 }
