@@ -14,7 +14,17 @@ const updateUserSchema = Yup.object().shape({
     .min(6, "طول نام کاربری باید بیشتر از ۶ حرف باشد"),
 });
 
+const productSchema = Yup.object().shape({
+  name: Yup.string().required("نام محصول الزامی است"),
+  price: Yup.number()
+    .required("قیمت محصول الزامی است")
+    .min(0, "قیمت محصول نمی‌تواند منفی باشد"),
+  quantity: Yup.number()
+    .required("تعداد محصول الزامی است")
+    .min(0, "تعداد محصول نمی‌تواند منفی باشد"),
+});
 module.exports = {
   userSchema,
   updateUserSchema,
+  productSchema,
 };
