@@ -20,7 +20,6 @@ const registerUser = async (input) => {
   await userModel.insertUser(input);
   delete input._id;
   delete input.password;
-  delete input.products;
   return {
     status: 201,
     data: {
@@ -38,7 +37,7 @@ const loginUser = async (input) => {
     throw {
       status: 404,
       data: {
-        message: "نام کاربری یا رمز عبور  نامعتبر است",
+        message: "نام کاربری یا رمز عبور نامعتبر است",
       },
     };
   }

@@ -48,7 +48,7 @@ const deleteProduct = async (input) => {
 };
 const getProduct = async (input) => {
   const product = await productModel.findProduct(
-    { pid: input.pid },
+    { pid: input.pid, uid: input.uid },
     { _id: 0 }
   );
   if (!product) {

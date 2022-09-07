@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const userModel = require("../services/UserService/model/model");
 const { promisify } = require("util");
 const tokenGenerator = require("../utils/tokenGenerator");
-const config = require("./../utils/initializer");
+const config = require("../utils/initializer");
 
 const accessManager = async (req, res) => {
   const header = req.headers;

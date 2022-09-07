@@ -33,6 +33,7 @@ const updateProduct = async (req, res) => {
       name: body.name,
       price: body.price,
       quantity: body.quantity,
+      uid: req.userId,
     };
     const result = await bl.updateProduct(input);
     res.status(result.status).send({ data: result.data });
@@ -47,6 +48,7 @@ const deleteProduct = async (req, res) => {
     const params = req.params;
     const input = {
       pid: params.pid,
+      uid: req.userId,
     };
     const result = await bl.deleteProduct(input);
     res.status(result.status).send({ data: result.data });
@@ -60,6 +62,7 @@ const getProduct = async (req, res) => {
     const params = req.params;
     const input = {
       pid: params.pid,
+      uid: req.userId,
     };
     const result = await bl.getProduct(input);
     res.status(result.status).send({ data: result.data });
