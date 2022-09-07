@@ -62,7 +62,7 @@ const updateUser = async (input) => {
     status: 200,
     data: {
       message: "اطلاعات کاربر با موفقیت تغییر یافت",
-      resutl: user,
+      result: user,
     },
   };
 };

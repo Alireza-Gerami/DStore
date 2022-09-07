@@ -12,7 +12,6 @@ const registerUser = async (req, res) => {
       uid: uuidV4(),
       username: body.username,
       password: body.password,
-      products: [],
     };
     const result = await bl.registerUser(input);
     res.status(result.status).send({ data: result.data });
