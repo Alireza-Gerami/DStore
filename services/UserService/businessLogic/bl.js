@@ -4,8 +4,8 @@ const tokenGenerator = require("../../../utils/tokenGenerator");
 
 const registerUser = async (input) => {
   const user = await userModel.findUser(
-    { username: input.username },
-    { _id: 0 }
+    {username: input.username},
+    {_id: 0}
   );
   if (user) {
     throw {
@@ -30,8 +30,8 @@ const registerUser = async (input) => {
 };
 const loginUser = async (input) => {
   const user = await userModel.findUser(
-    { username: input.username },
-    { _id: 0, products: 0 }
+    {username: input.username},
+    {_id: 0, products: 0}
   );
   if (!user || !(await bcrypt.compare(input.password, user.password))) {
     throw {
@@ -56,7 +56,7 @@ const loginUser = async (input) => {
   };
 };
 const updateUser = async (input) => {
-  const user = await userModel.updateUser({ uid: input.uid }, input);
+  const user = await userModel.updateUser({uid: input.uid}, input);
   return {
     status: 200,
     data: {
@@ -66,7 +66,7 @@ const updateUser = async (input) => {
   };
 };
 const deleteUser = async (input) => {
-  await userModel.deleteUser({ uid: input.uid });
+  await userModel.deleteUser({uid: input.uid});
   return {
     status: 200,
     data: {
@@ -76,8 +76,8 @@ const deleteUser = async (input) => {
 };
 const getUser = async (input) => {
   const user = await userModel.findUser(
-    { uid: input.uid },
-    { _id: 0, password: 0 }
+    {uid: input.uid},
+    {_id: 0, password: 0}
   );
   return {
     status: 200,

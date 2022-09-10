@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../services/UserService/model/model");
-const { promisify } = require("util");
+const {promisify} = require("util");
 const tokenGenerator = require("../utils/tokenGenerator");
 const config = require("../utils/initializer");
 
@@ -18,36 +18,36 @@ const accessManager = async (req, res) => {
   } else {
     throw {
       status: 401,
-      data: { message: "لطفا وارد حساب کاربری خود شوید" },
+      data: {message: "لطفا وارد حساب کاربری خود شوید"},
     };
   }
   req.userId = user.uid;
 };
 
 const checkAccessToken = async (token) => {
-  const { uid: uid } = parseJwt(token);
+  const {uid: uid} = parseJwt(token);
   const user = await checkUser(uid);
   try {
     await promisify(jwt.verify)(token, process.env.ACCESS_JWT_SECRET);
   } catch (err) {
     throw {
       status: 401,
-      data: { message: "لطفا دوباره وارد حساب کاربری خود شوید" },
+      data: {message: "لطفا دوباره وارد حساب کاربری خود شوید"},
     };
   }
   return user;
 };
 
 const checkRefreshToken = async (token, res) => {
-  const { id: uid } = parseJwt(token);
+  const {id: uid} = parseJwt(token);
   const tokenIsBlocked = await config.mongoDB
     .collection("tokenBlackList")
-    .find({ token })
+    .find({token})
     .toArray();
   if (tokenIsBlocked.length !== 0)
     throw {
       status: 401,
-      data: { message: "لطفا دوباره وارد حساب کاربری خود شوید" },
+      data: {message: "لطفا دوباره وارد حساب کاربری خود شوید"},
     };
   const user = await checkUser(uid);
   try {
@@ -56,15 +56,15 @@ const checkRefreshToken = async (token, res) => {
     res.removeHeader("refresh-token");
     throw {
       status: 401,
-      data: { message: "لطفا دوباره وارد حساب کاربری خود شوید" },
+      data: {message: "لطفا دوباره وارد حساب کاربری خود شوید"},
     };
   }
   return user;
 };
 
 const checkUser = async (uid) => {
-  const user = await userModel.findUser({ uid });
-  if (!user) throw { status: 401, data: { message: "کاربری یافت نشد" } };
+  const user = await userModel.findUser({uid});
+  if (!user) throw {status: 401, data: {message: "کاربری یافت نشد"}};
   return user;
 };
 

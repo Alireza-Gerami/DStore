@@ -1,7 +1,7 @@
 const bl = require("../businessLogic/bl");
 const validator = require("../../../utils/validator");
 const schemas = require("../../../utils/schema");
-const { v4: uuidV4 } = require("uuid");
+const {v4: uuidV4} = require("uuid");
 const accessManager = require("../../../middleware/accessControl");
 
 const createProduct = async (req, res) => {
@@ -17,7 +17,7 @@ const createProduct = async (req, res) => {
       uid: req.userId,
     };
     const result = await bl.createProduct(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     res.status(err.status).send(err.data);
   }
@@ -36,7 +36,7 @@ const updateProduct = async (req, res) => {
       uid: req.userId,
     };
     const result = await bl.updateProduct(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     res.status(err.status).send(err.data);
   }
@@ -51,7 +51,7 @@ const deleteProduct = async (req, res) => {
       uid: req.userId,
     };
     const result = await bl.deleteProduct(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     res.status(err.status).send(err.data);
   }
@@ -65,7 +65,7 @@ const getProduct = async (req, res) => {
       uid: req.userId,
     };
     const result = await bl.getProduct(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     res.status(err.status).send(err.data);
   }
@@ -77,7 +77,7 @@ const getProducts = async (req, res) => {
       uid: req.userId,
     };
     const result = await bl.getProducts(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     console.log(err);
     res.status(err.status).send(err.data);

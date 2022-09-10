@@ -12,7 +12,7 @@ const createProduct = async (input) => {
   };
 };
 const updateProduct = async (input) => {
-  const product = await productModel.updateProduct({ pid: input.pid }, input);
+  const product = await productModel.updateProduct({pid: input.pid}, input);
   if (!product) {
     throw {
       status: 404,
@@ -30,7 +30,7 @@ const updateProduct = async (input) => {
   };
 };
 const deleteProduct = async (input) => {
-  const deleted = await productModel.deleteProduct({ pid: input.pid });
+  const deleted = await productModel.deleteProduct({pid: input.pid});
   if (deleted.deletedCount === 0) {
     throw {
       status: 404,
@@ -48,8 +48,8 @@ const deleteProduct = async (input) => {
 };
 const getProduct = async (input) => {
   const product = await productModel.findProduct(
-    { pid: input.pid, uid: input.uid },
-    { _id: 0 }
+    {pid: input.pid, uid: input.uid},
+    {_id: 0}
   );
   if (!product) {
     throw {
@@ -69,8 +69,8 @@ const getProduct = async (input) => {
 };
 const getProducts = async (input) => {
   const products = await productModel.findProducts(
-    { uid: input.uid },
-    { _id: 0 }
+    {uid: input.uid},
+    {_id: 0}
   );
   if (products.length === 0) {
     throw {

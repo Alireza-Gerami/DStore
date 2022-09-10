@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-dotenv.config({ path: __dirname + "/.env" });
+dotenv.config({path: __dirname + "/.env"});
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -8,7 +8,7 @@ const app = express();
 const config = require("./utils/initializer");
 
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
 

@@ -6,7 +6,7 @@ const insertProduct = async (data) => {
 const findProduct = async (query, projection) => {
   return await config.mongoDB
     .collection("dayanProducts")
-    .findOne(query, { projection: projection });
+    .findOne(query, {projection: projection});
 };
 const findProducts = async (query, projection) => {
   return await config.mongoDB
@@ -18,8 +18,8 @@ const findProducts = async (query, projection) => {
 const updateProduct = async (query, data) => {
   await config.mongoDB
     .collection("dayanProducts")
-    .updateOne(query, { $set: data });
-  return findProduct(query, { _id: 0 });
+    .updateOne(query, {$set: data});
+  return findProduct(query, {_id: 0});
 };
 const deleteProduct = async (query) => {
   return await config.mongoDB.collection("dayanProducts").deleteOne(query);

@@ -1,7 +1,7 @@
 const bl = require("../businessLogic/bl");
 const validator = require("../../../utils/validator");
 const schemas = require("../../../utils/schema");
-const { v4: uuidV4 } = require("uuid");
+const {v4: uuidV4} = require("uuid");
 const accessManager = require("../../../middleware/accessControl");
 
 const registerUser = async (req, res) => {
@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
       password: body.password,
     };
     const result = await bl.registerUser(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     res.status(err.status).send(err.data);
   }
@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
       password: body.password,
     };
     const result = await bl.loginUser(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     console.log(err);
     res.status(err.status).send(err.data);
@@ -43,7 +43,7 @@ const updateUser = async (req, res) => {
       username: body.username,
     };
     const result = await bl.updateUser(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     res.status(err.status).send(err.data);
   }
@@ -55,7 +55,7 @@ const deleteUser = async (req, res) => {
       uid: req.userId,
     };
     const result = await bl.deleteUser(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     console.log(err);
     res.status(err.status).send(err.data);
@@ -68,7 +68,7 @@ const getUser = async (req, res) => {
       uid: req.userId,
     };
     const result = await bl.getUser(input);
-    res.status(result.status).send({ data: result.data });
+    res.status(result.status).send({data: result.data});
   } catch (err) {
     res.status(err.status).send(err.data);
   }
